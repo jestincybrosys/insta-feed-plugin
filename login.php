@@ -1,9 +1,4 @@
 <?php
-// Your Instagram app's credentials
-// $client_id = '269542565397880';
-// $client_secret = '2cae934ea5ecdbfe9b521b293349c662';
-// $redirect_uri = 'YOUR_REDIRECT_URI';
-
 // create shortcode for account login
 function sqf_login_with_insta()
 {
