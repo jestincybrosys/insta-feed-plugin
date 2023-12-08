@@ -305,7 +305,7 @@ function sqf_display_feed()
                             $output .= '<span class="dashicons dashicons-instagram"></span>';
                         }
                         $output .= '</a>';
-                        $output .= '</div>';
+                        $output .= '</div>'; 
                     }
                     $output .=  '</div>';
                     $output .=  '<div class="nav">';
