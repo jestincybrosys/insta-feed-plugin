@@ -1,6 +1,6 @@
 <?php
 // display feeds on webpage
-function sqf_display_feed()
+function sqf_display_feed_shortcode()
 {
     $feed = sqf_get_instagram_feed();
  
@@ -15,7 +15,7 @@ function sqf_display_feed()
         $profile_button_place = get_option('sqf_my_instagram_feed_profile_place');
         $top_class = ($profile_button_place == 'top') ? 'profile-top' : null;
         $width = get_option('sqf_my_instagram_feed_width');
-        $border_radius = get_option('sqf_my_instagram_border_radius','0');
+        $border_radius = get_option('sqf_my_instagram_border_radius');
         $insta_icon = get_option('sqf_instagram_icon_field');
         $follow_btn_text = get_option('sqf_display_profile_text');
 
@@ -42,25 +42,10 @@ function sqf_display_feed()
 
         $left_default_png = plugin_dir_url(__FILE__) . 'assets/images/arrow-back-circle.png';
         $right_default_png = plugin_dir_url(__FILE__) . 'assets/images/arrow-forward-circle.png';
-?>
-        <div class="preview-box ">
-                        <?php
-                if (is_admin() && $access_token_with_id) {
-                    $current_page = filter_input(INPUT_GET, 'page', FILTER_SANITIZE_STRING);
-
-                    // Check if the current page is your plugin's settings page
-                    if ($current_page === 'sqf-sub-settings') {
-                ?>
-                        <div class="badge-save-message">
-                            <h3 class="preview-title badge" style="background-color: #2271B1; font-weight: 400">Preview</h3>
-                            <div id="saveMessage" style="display: none;"></div>
-                        </div>
-                <?php
-                    }
-        
-
-            if ($view_type === 'grid') {
-                $output = '<div class="grid-img-container ' . $grid_width . '">
+      
+        $output = '<div>';
+            if ($view_type === 'grid'  && $access_token_with_id) {
+                $output .= '<div class="grid-img-container ' . $grid_width . '">
                               <div class="username-follow px-2">
                                 ' . ($sqf_username ? '<div class="username-above-feed"><a href="' . esc_url($username_link) . '">' . $username . '</a></div>' : '') . '
                                 ' . (($view_profile == 1 && $profile_button_place == 'top') ? '<div class="account-follow ' . $top_class . '"><a href="' . esc_url($username_link) . '" class="follow-btn">' . $follow_btn_text . '</a></div>' : '') . '
@@ -72,7 +57,7 @@ function sqf_display_feed()
                         foreach ($feed as $post) {
                             $i++;
                             if ($i > $post_limit) break;
-                            $output .= '<div class="col-lg-' . (12 / $col) . ' col-md-12 mb-4 mb-lg-0 sqf-post-grid p-1" style="height: ' . (empty($grid_height) ? '150' : esc_attr__($grid_height)) . 'px;">
+                            $output .= '<div class="col-lg-' . (12 / $col) . ' col-ms8-12 mb-4 mb-lg-0 sqf-post-grid p-1" style="height: ' . (empty($grid_height) ? '150' : esc_attr__($grid_height)) . 'px;">
                                           <a href="' . esc_url($post->permalink) . '" target="_blank">
                                             ' . ($post->media_type == 'VIDEO' ? '<video src="' . esc_attr__($post->media_url) . '" controls style="border-radius:' . esc_attr__($border_radius) . 'px;"></video>' : '<img src="' . esc_attr__($post->media_url) . '" alt="' . $post->caption . '" style="border-radius:' . esc_attr__($border_radius) . 'px;"/>') . '
                                             ' . ($insta_icon == 1 ? '<span class="dashicons dashicons-instagram"></span>' : '') . '
@@ -196,5 +181,5 @@ function sqf_display_feed()
             }
         }
     }
-}
+
     ?>

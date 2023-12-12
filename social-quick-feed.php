@@ -17,6 +17,7 @@ include('get-feeds.php');
 include('settings-fields.php');
 include('appearance.php');
 include('preview.php');
+include('shortcode.php');
 
 $settings_fields = new SQF_SETTINGS_CLASS();
 ?>

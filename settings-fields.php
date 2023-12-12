@@ -16,7 +16,7 @@ class SQF_SETTINGS_CLASS extends SQF_SETTINGS_CALLBACK
         add_action('admin_init',  array($this, 'sqf_my_instagram_feed_settings'));
 
         add_shortcode('instagram-login',  'sqf_login_with_insta');
-        add_shortcode('sqf_feed', 'sqf_display_feed');
+        add_shortcode('sqf_feed', 'sqf_display_feed_shortcode');
     }
 
     function sqf_settings_menu()
@@ -57,6 +57,120 @@ class SQF_SETTINGS_CLASS extends SQF_SETTINGS_CALLBACK
             'sqf_my_instagram_feed_settings',            // Option group
             'sqf_my_instagram_feed_view_type',              // Option name
             'sqf_my_instagram_feed_sanitize_view_type' //optional callback to sanitize
+        );
+
+                // Add settings field for Username
+                add_settings_field(
+                    'sqf_my_instagram_username',
+                    __('Username', 'social-quick-feed'),
+                    array($this, 'sqf_my_instagram_username_callback'),
+                    'sqf_my_instagram_feed_settings',
+                    'sqf_my_instagram_feed_settings_section'
+                );
+        
+        
+                // Register settings
+                register_setting(
+                    'sqf_my_instagram_feed_settings',
+                    'sqf_my_instagram_username',
+                );
+
+                        // Add settings field for Border Radius
+        add_settings_field(
+            'sqf_my_instagram_border_radius',
+            __('Set Border Radius', 'social-quick-feed'),
+            array($this, 'sqf_my_instagram_border_radius_callback'),
+            'sqf_my_instagram_feed_settings',
+            'sqf_my_instagram_feed_settings_section'
+        );
+
+
+        // Register settings
+        register_setting(
+            'sqf_my_instagram_feed_settings',
+            'sqf_my_instagram_border_radius',
+        );
+
+
+
+        // Post limit input
+        add_settings_field(
+            'sqf_post_limit_settings_field',
+            __('Pictures Limit', 'social-quick-feed'),
+            array($this, 'sqf_instagram_post_limit_callback'),
+            'sqf_my_instagram_feed_settings',
+            'sqf_my_instagram_feed_settings_section'
+        );
+
+        // Register settings
+        register_setting(
+            'sqf_my_instagram_feed_settings',
+            'sqf_instagram_post_limit',
+            array(
+                'type' => 'integer', // Set the data type as needed
+                'default' => 6 // Set the default value here
+            )
+        );
+
+        //Profile Link settings
+        add_settings_field(
+            'display_profile_id',
+            __('Follow Button', 'social-quick-feed'),
+            array($this, 'display_profile_checkbox_field_callback'),
+            'sqf_my_instagram_feed_settings',
+            'sqf_my_instagram_feed_settings_section'
+        );
+
+        // Register settings
+        register_setting(
+            'sqf_my_instagram_feed_settings',
+            'sqf_display_profile_checkbox',
+        );
+
+        //Profile Link text settings
+        add_settings_field(
+            'sqf_display_profile_text',
+            __('Follow Button Text', 'social-quick-feed'),
+            array($this, 'display_profile_text_field_callback'),
+            'sqf_my_instagram_feed_settings',
+            'sqf_my_instagram_feed_settings_section'
+        );
+
+        // Register settings
+        register_setting(
+            'sqf_my_instagram_feed_settings',
+            'sqf_display_profile_text',
+            'Type your Button Name'
+        );
+
+        // Add settings field for width 
+        add_settings_field(
+            'sqf_my_instagram_feed_profile_place',
+            __('Change Place of Follow Button', 'social-quick-feed'),
+            array($this, 'sqf_my_instagram_feed_profile_place_callback'),
+            'sqf_my_instagram_feed_settings',
+            'sqf_my_instagram_feed_settings_section'
+        );
+
+        // Register settings
+        register_setting(
+            'sqf_my_instagram_feed_settings',
+            'sqf_my_instagram_feed_profile_place',
+        );
+
+        //Instagram icon field settings
+        add_settings_field(
+            'sqf_instagram_icon_field',
+            __('Instagram Icon', 'social-quick-feed'),
+            array($this, 'instagram_icon_field_callback'),
+            'sqf_my_instagram_feed_settings',
+            'sqf_my_instagram_feed_settings_section'
+        );
+
+        // Register settings
+        register_setting(
+            'sqf_my_instagram_feed_settings',
+            'sqf_instagram_icon_field'
         );
 
         if ($view_type === 'grid') {
@@ -274,117 +388,7 @@ class SQF_SETTINGS_CLASS extends SQF_SETTINGS_CALLBACK
             );
         }
 
-        // Add settings field for Border Radius
-        add_settings_field(
-            'sqf_my_instagram_border_radius',
-            __('Set Border Radius', 'social-quick-feed'),
-            array($this, 'sqf_my_instagram_border_radius_callback'),
-            'sqf_my_instagram_feed_settings',
-            'sqf_my_instagram_feed_settings_section'
-        );
 
-
-        // Register settings
-        register_setting(
-            'sqf_my_instagram_feed_settings',
-            'sqf_my_instagram_border_radius',
-        );
-
-        // Add settings field for Username
-        add_settings_field(
-            'sqf_my_instagram_username',
-            __('Username', 'social-quick-feed'),
-            array($this, 'sqf_my_instagram_username_callback'),
-            'sqf_my_instagram_feed_settings',
-            'sqf_my_instagram_feed_settings_section'
-        );
-
-
-        // Register settings
-        register_setting(
-            'sqf_my_instagram_feed_settings',
-            'sqf_my_instagram_username',
-        );
-
-        // Post limit input
-        add_settings_field(
-            'sqf_post_limit_settings_field',
-            __('Pictures Limit', 'social-quick-feed'),
-            array($this, 'sqf_instagram_post_limit_callback'),
-            'sqf_my_instagram_feed_settings',
-            'sqf_my_instagram_feed_settings_section'
-        );
-
-        // Register settings
-        register_setting(
-            'sqf_my_instagram_feed_settings',
-            'sqf_instagram_post_limit',
-            array(
-                'type' => 'integer', // Set the data type as needed
-                'default' => 6 // Set the default value here
-            )
-        );
-
-        //Profile Link settings
-        add_settings_field(
-            'display_profile_id',
-            __('Follow Button', 'social-quick-feed'),
-            array($this, 'display_profile_checkbox_field_callback'),
-            'sqf_my_instagram_feed_settings',
-            'sqf_my_instagram_feed_settings_section'
-        );
-
-        // Register settings
-        register_setting(
-            'sqf_my_instagram_feed_settings',
-            'sqf_display_profile_checkbox',
-        );
-
-        //Profile Link text settings
-        add_settings_field(
-            'sqf_display_profile_text',
-            __('Follow Button Text', 'social-quick-feed'),
-            array($this, 'display_profile_text_field_callback'),
-            'sqf_my_instagram_feed_settings',
-            'sqf_my_instagram_feed_settings_section'
-        );
-
-        // Register settings
-        register_setting(
-            'sqf_my_instagram_feed_settings',
-            'sqf_display_profile_text',
-            'Type your Button Name'
-        );
-
-        // Add settings field for width 
-        add_settings_field(
-            'sqf_my_instagram_feed_profile_place',
-            __('Change Place of Follow Button', 'social-quick-feed'),
-            array($this, 'sqf_my_instagram_feed_profile_place_callback'),
-            'sqf_my_instagram_feed_settings',
-            'sqf_my_instagram_feed_settings_section'
-        );
-
-        // Register settings
-        register_setting(
-            'sqf_my_instagram_feed_settings',
-            'sqf_my_instagram_feed_profile_place',
-        );
-
-        //Instagram icon field settings
-        add_settings_field(
-            'sqf_instagram_icon_field',
-            __('Instagram Icon', 'social-quick-feed'),
-            array($this, 'instagram_icon_field_callback'),
-            'sqf_my_instagram_feed_settings',
-            'sqf_my_instagram_feed_settings_section'
-        );
-
-        // Register settings
-        register_setting(
-            'sqf_my_instagram_feed_settings',
-            'sqf_instagram_icon_field'
-        );
     }
 }
 ?>
