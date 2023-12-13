@@ -247,9 +247,6 @@ class SQF_SETTINGS_CALLBACK
         echo '<input type="color" id="my-plugin-color" name="sqf_my_plugin_color" value="' . esc_attr($value) . '" class="my-color-field">';
     }
 
-
-
-
     function sqf_my_instagram_feed_profile_place_callback()
     {
     ?>

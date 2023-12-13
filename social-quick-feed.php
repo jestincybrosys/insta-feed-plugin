@@ -15,6 +15,7 @@ include('login.php');
 include('main-page.php');
 include('get-feeds.php');
 include('settings-fields.php');
+// include('settings_fields.php');
 include('appearance.php');
 include('preview.php');
 include('shortcode.php');

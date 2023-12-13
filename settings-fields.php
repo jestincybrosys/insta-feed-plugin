@@ -3,7 +3,6 @@ include('settings-fields-callback.php');
 
 class SQF_SETTINGS_CLASS extends SQF_SETTINGS_CALLBACK
 {
- 
     public function __construct()
     {
         // Hook the settings functions to the appropriate action
@@ -46,7 +45,7 @@ class SQF_SETTINGS_CLASS extends SQF_SETTINGS_CALLBACK
         // Add settings field for view type 
         add_settings_field(
             'sqf_my_instagram_feed_view_type',                            // ID of the field
-            __('View Type', 'social-quick-feed'),                         // Title of the field
+            __('View Type', 'social-quick-feed'),                        // Title of the field
             array($this, 'sqf_my_instagram_feed_view_type_callback'),   // Function to display field markup
             'sqf_my_instagram_feed_settings',                          // Page where field should be displayed
             'sqf_my_instagram_feed_settings_section'                  // Section where field should be displayed
@@ -55,7 +54,7 @@ class SQF_SETTINGS_CLASS extends SQF_SETTINGS_CALLBACK
         // Register settings
         register_setting(
             'sqf_my_instagram_feed_settings',            // Option group
-            'sqf_my_instagram_feed_view_type',              // Option name
+            'sqf_my_instagram_feed_view_type',          // Option name
             'sqf_my_instagram_feed_sanitize_view_type' //optional callback to sanitize
         );
 
@@ -67,7 +66,6 @@ class SQF_SETTINGS_CLASS extends SQF_SETTINGS_CALLBACK
                     'sqf_my_instagram_feed_settings',
                     'sqf_my_instagram_feed_settings_section'
                 );
-        
         
                 // Register settings
                 register_setting(
@@ -83,16 +81,11 @@ class SQF_SETTINGS_CLASS extends SQF_SETTINGS_CALLBACK
             'sqf_my_instagram_feed_settings',
             'sqf_my_instagram_feed_settings_section'
         );
-
-
         // Register settings
         register_setting(
             'sqf_my_instagram_feed_settings',
             'sqf_my_instagram_border_radius',
         );
-
-
-
         // Post limit input
         add_settings_field(
             'sqf_post_limit_settings_field',
@@ -101,17 +94,15 @@ class SQF_SETTINGS_CLASS extends SQF_SETTINGS_CALLBACK
             'sqf_my_instagram_feed_settings',
             'sqf_my_instagram_feed_settings_section'
         );
-
         // Register settings
         register_setting(
             'sqf_my_instagram_feed_settings',
             'sqf_instagram_post_limit',
             array(
                 'type' => 'integer', // Set the data type as needed
-                'default' => 6 // Set the default value here
+                'default' => 6      // Set the default value here
             )
         );
-
         //Profile Link settings
         add_settings_field(
             'display_profile_id',
@@ -173,7 +164,7 @@ class SQF_SETTINGS_CLASS extends SQF_SETTINGS_CALLBACK
             'sqf_instagram_icon_field'
         );
 
-        if ($view_type === 'grid') {
+        
             // Add settings field for Grid Column 
             add_settings_field(
                 'sqf_grid_columns',
@@ -189,12 +180,10 @@ class SQF_SETTINGS_CLASS extends SQF_SETTINGS_CALLBACK
                 'sqf_grid_columns',
                 array(
                     'type' => 'integer', // Set the data type as needed
-                    'default' => 2 // Set the default value here
+                    'default' => 2      // Set the default value here
                 )
             );
-        }
-
-        if ($view_type === 'scrollable') {
+        
             // Add settings field for height 
             add_settings_field(
                 'sqf_scrollable_container_height',
@@ -225,12 +214,10 @@ class SQF_SETTINGS_CLASS extends SQF_SETTINGS_CALLBACK
                 'sqf_scrollable_columns',
                 array(
                     'type' => 'integer', // Set the data type as needed
-                    'default' => 2 // Set the default value here
+                    'default' => 2      // Set the default value here
                 )
             );
-        }
 
-        if ($view_type != 'masonry') {
             // Add settings field for height 
             add_settings_field(
                 'sqf_my_instagram_feed_height',
@@ -260,9 +247,7 @@ class SQF_SETTINGS_CLASS extends SQF_SETTINGS_CALLBACK
                 'sqf_my_instagram_feed_settings',
                 'sqf_my_instagram_feed_width',
             );
-        }
 
-        if ($view_type === 'carousel') {
             // Add settings field for Carousel Columns
             add_settings_field(
                 'sqf_grid_columns',
@@ -278,7 +263,7 @@ class SQF_SETTINGS_CLASS extends SQF_SETTINGS_CALLBACK
                 'sqf_carousel_columns',
                 array(
                     'type' => 'integer', // Set the data type as needed
-                    'default' => 2 // Set the default value here
+                    'default' => 2      // Set the default value here
                 )
             );
 
@@ -390,5 +375,5 @@ class SQF_SETTINGS_CLASS extends SQF_SETTINGS_CALLBACK
 
 
     }
-}
+
 ?>

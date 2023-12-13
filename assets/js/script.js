@@ -761,3 +761,26 @@ colorShades.forEach(function (colorShade) {
     }, 5000);
   });
 });
+
+
+//js for the preview custom
+
+jQuery(document).ready(function($) {
+  $('input[name="sqf_my_instagram_feed_view_type"]').change(function() {
+      var selectedLayout = $(this).val();
+      
+      // Make an AJAX request to update the live preview
+      $.ajax({
+          type: 'POST',
+          url: ajaxurl,
+          data: {
+              action: 'update_insta_feed_preview',
+              layout: selectedLayout,
+          },
+          success: function(response) {
+              // Update the preview area with the new content
+              $('#insta-feed-preview').html(response);
+          }
+      });
+  });
+});
