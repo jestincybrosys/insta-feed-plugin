@@ -78,7 +78,7 @@ function sqf_settings_page()
                         <thead>
                             <tr>
                                 <th id="columnname" class="manage-column column-columnname" scope="col">Username</th>
-                                <th id="columnname" class="manage-column column-columnname" scope="col">User ID</th>
+                                <th id="columnname" class="manage-column column-columnname" scope="col">User ID</th>    
                                 <th id="columnname" class="manage-column column-columnname" scope="col">Access Token</th>
                                 <th id="columnname" class="manage-column column-columnname" scope="col">ShortCode</th>
 
@@ -195,8 +195,8 @@ function sqf_settings_page()
                     </table>
                 </div>
             </div>
-<?php
-                                }
-                            }
-                        }
+            <?php
+            }
+        }
+    }
 ?>

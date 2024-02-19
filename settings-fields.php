@@ -81,11 +81,15 @@ class SQF_SETTINGS_CLASS extends SQF_SETTINGS_CALLBACK
             'sqf_my_instagram_feed_settings',
             'sqf_my_instagram_feed_settings_section'
         );
+
+
         // Register settings
         register_setting(
             'sqf_my_instagram_feed_settings',
             'sqf_my_instagram_border_radius',
         );
+
+
         // Post limit input
         add_settings_field(
             'sqf_post_limit_settings_field',
@@ -94,6 +98,7 @@ class SQF_SETTINGS_CLASS extends SQF_SETTINGS_CALLBACK
             'sqf_my_instagram_feed_settings',
             'sqf_my_instagram_feed_settings_section'
         );
+
         // Register settings
         register_setting(
             'sqf_my_instagram_feed_settings',
@@ -103,6 +108,7 @@ class SQF_SETTINGS_CLASS extends SQF_SETTINGS_CALLBACK
                 'default' => 6      // Set the default value here
             )
         );
+
         //Profile Link settings
         add_settings_field(
             'display_profile_id',

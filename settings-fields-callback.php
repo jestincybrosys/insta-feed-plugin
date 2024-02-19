@@ -67,38 +67,6 @@ class SQF_SETTINGS_CALLBACK
         }
         return $value;
     }
-    function sqf_my_instagram_username_callback()
-    {
-    ?>
-        <input id="sqf-username" type="checkbox" name="sqf_my_instagram_username" value="1" <?php checked(1, esc_attr__(get_option('sqf_my_instagram_username', 'social-quick-feed'), true)); ?> />
-    <?php
-    }
-
-        //field to check for showing follow button
-        function display_profile_checkbox_field_callback()
-        {
-        ?>
-            <input type="checkbox" name="sqf_display_profile_checkbox" value="1" <?php checked(1, get_option('sqf_display_profile_checkbox'), true); ?> />
-        <?php
-        }
-    
-        //field to change the button name
-        function display_profile_text_field_callback()
-        {
-        ?>
-            <input name="sqf_display_profile_text" type="text" id="sqf-follow-button" value="<?php echo esc_attr(get_option('sqf_display_profile_text', 'Follow Button')) ?>">
-        <?php
-        }
-
-            //field to enter post limit
-    function sqf_instagram_post_limit_callback()
-    {
-        $post_limit = get_option('sqf_instagram_post_limit', 6);
-    ?>
-        <input type="number" name="sqf_instagram_post_limit" id="instagram_post_limit" value="<?php echo esc_attr($post_limit); ?>">
-    <?php
-    }
-
 
     function sqf_grid_columns_callback()
     {
@@ -134,6 +102,12 @@ class SQF_SETTINGS_CALLBACK
     <?php
     }
 
+    function sqf_my_instagram_username_callback()
+    {
+    ?>
+        <input id="sqf-username" type="checkbox" name="sqf_my_instagram_username" value="1" <?php checked(1, esc_attr__(get_option('sqf_my_instagram_username', 'social-quick-feed'), true)); ?> />
+    <?php
+    }
 
     function sqf_my_instagram_feed_height_callback()
     {
@@ -188,7 +162,7 @@ class SQF_SETTINGS_CALLBACK
         </label>
         <p id="result"></p>
     <?php
-    }   
+    }
 
     //carousel arrow key function
     function sqf_my_instagram_carousel_left_arrow_callback()
@@ -245,6 +219,31 @@ class SQF_SETTINGS_CALLBACK
     {
         $value = get_option('sqf_my_plugin_color', '#ffffff');
         echo '<input type="color" id="my-plugin-color" name="sqf_my_plugin_color" value="' . esc_attr($value) . '" class="my-color-field">';
+    }
+
+    //field to enter post limit
+    function sqf_instagram_post_limit_callback()
+    {
+        $post_limit = get_option('sqf_instagram_post_limit', 6);
+    ?>
+        <input type="number" name="sqf_instagram_post_limit" id="instagram_post_limit" value="<?php echo esc_attr($post_limit); ?>">
+    <?php
+    }
+
+    //field to check for showing follow button
+    function display_profile_checkbox_field_callback()
+    {
+    ?>
+        <input type="checkbox" name="sqf_display_profile_checkbox" value="1" <?php checked(1, get_option('sqf_display_profile_checkbox'), true); ?> />
+    <?php
+    }
+
+    //field to change the button name
+    function display_profile_text_field_callback()
+    {
+    ?>
+        <input name="sqf_display_profile_text" type="text" id="sqf-follow-button" value="<?php echo esc_attr(get_option('sqf_display_profile_text', 'Follow Button')) ?>">
+    <?php
     }
 
     function sqf_my_instagram_feed_profile_place_callback()
