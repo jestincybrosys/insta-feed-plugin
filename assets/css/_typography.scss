@@ -1,0 +1,101 @@
+.sqf-main-card {
+  border: 1px solid rgb(167 167 167 / 66%);
+  border-radius: 5px;
+  padding: 10px;
+  a {
+    text-decoration: none !important;
+    color: unset !important;
+    :hover {
+      text-decoration: none !important;
+      color: unset !important;
+    }
+  }
+  p {
+    margin-bottom: 0;
+    padding: 5px 0;
+    font-size: 15px;
+    font-weight: 500;
+  }
+  .sqf-card-inner-line {
+    border-bottom: 1px solid rgb(167 167 167 / 66%);
+    margin-bottom: 5px;
+    padding-bottom: 5px;
+  }
+  .sqf-card-inner-t-line {
+    border-top: 1px solid rgb(167 167 167 / 66%);
+    display: flex;
+    margin-top: 5px;
+    padding-top: 5px;
+    justify-content: space-between;
+    a {
+      text-decoration: none;
+      :hover {
+        text-decoration: none;
+      }
+    }
+  }
+  input {
+    border: 0;
+    background-color: #00000000;
+    border-radius: 0;
+    padding: 2px 6px;
+    font-size: 12px;
+    margin-bottom: 10px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  input:focus {
+    outline: none;
+    border-color: #ff0084; // Change the border color on focus
+  }
+  button {
+    width: fit-content;
+  }
+  div {
+    width: 100%;
+    display: flex;
+  }
+
+  span {
+    width: fit-content;
+    height: fit-content;
+  }
+}
+.sqf-copy-code {
+  color: #9b9b9b;
+}
+.sqf-copy-code-scc {
+  color: #14ae00;
+}
+.sqf-card-head {
+  padding: 20px 20px 0px 0px;
+  display: grid;
+  // grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(4, minmax(250px, 1fr));
+  gap: 15px;
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  @media (max-width: 1316px) {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
+}
+.icon {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  a {
+    text-decoration: none;
+    color: #f499c8;
+    :hover {
+      text-decoration: none;
+      color: #f58dc3;
+    }
+  }
+}
+.dashicons.dashicons-plus {
+  font-size: 8em; /* Adjust the size as needed */
+}

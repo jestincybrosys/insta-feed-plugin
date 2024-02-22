@@ -2,7 +2,7 @@
 // display feeds on webpage
 function sqf_display_feed_shortcode()
 {
-    $feed = sqf_get_instagram_feed();
+    $feed = sqf_get_instagram_feeds();
  
     if ($feed) {
         $username = $feed[0]->username;

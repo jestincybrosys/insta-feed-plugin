@@ -1,6 +1,5 @@
 <?php
 include('settings-fields-callback.php');
-
 class SQF_SETTINGS_CLASS extends SQF_SETTINGS_CALLBACK
 {
     public function __construct()
@@ -17,6 +16,7 @@ class SQF_SETTINGS_CLASS extends SQF_SETTINGS_CALLBACK
         add_shortcode('instagram-login',  'sqf_login_with_insta');
         add_shortcode('sqf_feed', 'sqf_display_feed_shortcode');
     }
+
 
     function sqf_settings_menu()
     {
